@@ -5,9 +5,67 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --card: #ffffff;
+  --card-foreground: ;
+
+  --popover: #ffffff;
+  --popover-foreground: #020817;
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
+  --background: #222;
+  --foreground: #f8fafc;
+
+  --card: #222;
+  --card-foreground: #f8fafc;
+
+  --popover: #222;
+  --popover-foreground: #f8fafc;
+}
+
+@layer base {
+  /* * {
+    @apply border-border;
+  } */
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .hero-title {
+    @apply font-semibold text-lg uppercase dark:text-brand-bg text-[#555] opacity-0 max-md:mb-10;
+  }
+
+  .hero-content {
+    @apply font-bold text-4xl md:text-5xl lg:text-7xl uppercase dark:text-brand-bg;
+  }
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+:root {
+  --brand-primary: #0095fe;
+  --brand-secondary: #161415;
+  --brand-dark: #222;
+  --brand-ash: #b8b8b8;
+  --brand-bg: #ffffff;
+  --brand-bg-dark: #333333;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
@@ -18,4 +76,4 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
-}
+} */
