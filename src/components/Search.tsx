@@ -15,7 +15,7 @@ function Search() {
 
   return (
     <form
-      className="lg:flex items-center lg:relative lg:w-1/2 max-w-[22rem]"
+      className="hidden md:flex items-center lg:relative lg:w-1/2 max-w-[22rem]"
       onSubmit={handleSubmit}
     >
       <Input

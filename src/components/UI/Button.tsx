@@ -15,6 +15,7 @@ const buttonVariants = cva(
         secondary:
           "border-[1.25px] border-brand-secondary bg-brand-secondary text-brand-bg hover:bg-inherit hover:text-brand-bg hover:border-brand-bg",
         link: "text-base text-[#222] dark:text-brand-ash underline-offset-4 hover:underline hover:text-brand dark:hover:text-brand",
+        ghost: "shadow-[0_0_4px_0_#c3ff7d3f] bg-inherit rounded-[8px]",
       },
       size: {
         default: "h-9 lg:h-11 px-5 py-1 xl:px-6",

@@ -3,10 +3,22 @@
 import { useStateContext } from "@/components/Contexts/ContextProvider";
 import Header from "@/components/Dashboard/DashboardHeader";
 import Sidebar from "@/components/Dashboard/Sidebar";
+import RiderSidebar from "@/components/Dashboard/RiderDash/RiderSidebar";
+import AdminSidebar from "@/components/Dashboard/AdminDash/AdminSidebar";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const { activeMenu, setActiveMenu } = useStateContext();
+  const pathname = usePathname();
+
+  let SidebarComponent = Sidebar;
+
+  if (pathname.startsWith("/dashboard/rider")) {
+    SidebarComponent = RiderSidebar;
+  } else if (pathname.startsWith("/dashboard/admin")) {
+    SidebarComponent = AdminSidebar;
+  }
 
   return (
     <div className="flex relative min-h-screen w-full overflow-hidden">
@@ -14,7 +26,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       {activeMenu && (
         <div
           className="fixed inset-0 z-40"
-          onClick={() => setActiveMenu(false)} // Close sidebar when clicking outside
+          onClick={() => setActiveMenu(false)}
         ></div>
       )}
       <div
@@ -22,11 +34,15 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           activeMenu ? "w-72" : "w-0"
         }`}
       >
-        <Sidebar />
+        <SidebarComponent />
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col flex-1 min-h-screen w-full">
+      <div
+        className={`flex flex-col flex-1 min-h-screen w-full ${
+          activeMenu ? "ml-[285px]" : "ml-0"
+        } transition-all duration-300`}
+      >
         {/* Header */}
         <div className="sticky top-3 w-full">
           <Header />
