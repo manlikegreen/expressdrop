@@ -270,7 +270,7 @@ const Nav_Links: NavLink[] = [
   { name: "About Us", link: "/about", icon: About },
   { name: "Services", link: "/services", icon: Services },
   { name: "Contact Us", link: "/contact", icon: Contact },
-  { name: "Dashboard", link: "/dashboard/admin/home", icon: Contact },
+  { name: "Dashboard", link: "/dashboard/home", icon: Contact },
 ];
 
 export default AltNavbar;
