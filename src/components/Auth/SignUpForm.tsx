@@ -222,6 +222,7 @@ function SignUpForm() {
                 <Checkbox
                   checked={field.value}
                   onCheckedChange={field.onChange}
+                  className="peer-focus-visible:text-brand-secondary dark:peer-focus-visible:text-brand-bg"
                 />
               </FormControl>
               <FormLabel className="text-base md:text-[1.25rem] dark:text-brand-ash font-normal">

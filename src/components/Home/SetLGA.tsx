@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Link from "next/link";
 
 const LagosLGAs = [
   "Agege",
@@ -182,7 +183,9 @@ const SetLGA = () => {
                         lg={4}
                         className="items-center justify-center flex"
                       >
-                        <Button variant="secondary">Driver Details</Button>
+                        <Link href="/selectrider">
+                          <Button variant="secondary">Driver Details</Button>
+                        </Link>
                       </Grid>
                     </Grid>
                   </Form>
