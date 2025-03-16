@@ -20,6 +20,7 @@ import HomeIcon from "../Icons/HomeIcon";
 import About from "../Icons/About";
 import Services from "../Icons/Services";
 import Contact from "../Icons/Contact";
+import DashboardIcon from "../Icons/DashboardIcon";
 
 interface AltNavbarProps {
   children?: ReactNode;
@@ -160,7 +161,7 @@ const AltNavbar: React.FC<AltNavbarProps> = ({ children }) => {
               <AnimationContainer animation="fadeLeft" delay={0.1}>
                 <div className="flex items-center justify-center gap-x-4">
                   <Button variant={"alternate"}>
-                    <Link href="/signup" className="flex items-center">
+                    <Link href="/auth/login" className="flex items-center">
                       Get started
                     </Link>
                   </Button>
@@ -270,7 +271,7 @@ const Nav_Links: NavLink[] = [
   { name: "About Us", link: "/about", icon: About },
   { name: "Services", link: "/services", icon: Services },
   { name: "Contact Us", link: "/contact", icon: Contact },
-  { name: "Dashboard", link: "/guestdashboard", icon: Contact },
+  { name: "Dashboard", link: "/confirmorder", icon: DashboardIcon },
 ];
 
 export default AltNavbar;

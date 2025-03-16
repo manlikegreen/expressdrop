@@ -25,7 +25,7 @@ const AvailableRidersPage = () => {
   const [selectedRider, setSelectedRider] = useState<Rider | null>(null);
 
   return (
-    <div className="container mt-[5rem] lg:mt-[8rem]">
+    <div className="container mt-[7rem] lg:mt-[8rem]">
       <h1 className="text-[1.5rem] md:text-[2.5rem] lg:text-[3.3rem] font-semibold text-center">
         Select a Rider
       </h1>

@@ -1,7 +1,7 @@
 const HomeCards = () => {
   return (
     <div className="container mx-auto px-4 pt-12">
-      <div className="bg-gray-200 dark:bg-brand-bgdark p-12 rounded-xl">
+      <div className="bg-gray-200 dark:bg-brand-bgdark p-8 rounded-xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-12">
           {DETAILS.map((d) => (
             <div key={d.title}>

@@ -19,7 +19,7 @@ const History = () => {
   };
   return (
     <div>
-      <div className="container mt-[4.5rem] overflow-x-auto px-10 py-6">
+      <div className="container overflow-x-auto px-10 py-6">
         <table className="w-full border-separate border-spacing-y-5">
           <thead className="mb-3">
             <tr className="py-6">
