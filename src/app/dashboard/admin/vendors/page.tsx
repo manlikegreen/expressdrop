@@ -1,10 +1,13 @@
+import Vendors from "@/components/Dashboard/AdminDash/AdminVendors/Vendors";
 import React from "react";
 
 const AdminVendorPage = () => {
   return (
-    <div>
-      <div></div>
-    </div>
+    <>
+      <div>
+        <Vendors />
+      </div>
+    </>
   );
 };
 

@@ -41,18 +41,26 @@ const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
   };
 
   return (
-    <div className="container mt-[5rem] lg:mt-[8rem] flex justify-center">
-      <div className="max-w-2xl w-full bg-white dark:bg-brand-bgdark p-6 rounded-lg shadow-xl">
+    <div className="container mt-[5rem] lg:mt-[8rem] flex justify-center items-center flex-col gap-8">
+      <div>
+        <h1 className="text-[1.5rem] md:text-[2.5rem] lg:text-[3.3rem] font-semibold text-center">
+          Order Confirmation
+        </h1>
+        <p className="text-[0.75rem] md:text-[1.25rem] text-gray-600 dark:text-brand-ash text-center font-medium">
+          Please review your details before confirming your order
+        </p>
+      </div>
+      <div className="max-w-2xl w-full bg-inherit dark:bg-inherit">
         {isOrderConfirmed ? (
           // ✅ Lottie Success Animation
           <div className="flex flex-col items-center text-center">
             <DotLottieReact
               src="https://lottie.host/0fc8877c-d811-42c9-97fa-9936b41a7e83/HygPfiGznY.lottie"
-              loop={false} // ✅ Runs once for confirmation effect
+              loop={true} // ✅ Runs once for confirmation effect
               autoplay
               style={{ width: "300px", height: "300px" }}
             />
-            <h2 className="text-2xl font-semibold text-green-600 mt-4">
+            <h2 className="text-2xl font-semibold text-green-600">
               Order Confirmed!
             </h2>
             <p className="text-gray-700 dark:text-brand-ash mt-2">
@@ -64,14 +72,7 @@ const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
           </div>
         ) : (
           // ✅ Default order confirmation UI
-          <>
-            <h1 className="text-[1.5rem] md:text-[2.5rem] lg:text-[3.3rem] font-semibold text-center">
-              Order Confirmation
-            </h1>
-            <p className="text-[0.75rem] md:text-[1.25rem] text-gray-600 dark:text-brand-ash text-center font-medium">
-              Please review your details before confirming your order
-            </p>
-
+          <div className="max-w-2xl w-full bg-white dark:bg-brand-bgdark p-6 rounded-lg shadow-xl">
             <div className="flex flex-col items-center justify-center text-center my-6">
               <h2 className="text-xl font-semibold mb-4">Selected Rider</h2>
               <div className="flex items-center gap-4">
@@ -126,7 +127,7 @@ const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
               </Button>
               <Button onClick={handleConfirmClick}>Confirm Order</Button>
             </div>
-          </>
+          </div>
         )}
       </div>
     </div>

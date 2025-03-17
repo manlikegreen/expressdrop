@@ -12,12 +12,6 @@ const ORDERHEADERS: Array<OrderHeaders> = [
 ];
 
 const NewOrders = () => {
-  // const statusColors: Record<string, string> = {
-  //   ongoing: "bg-amber-500 text-white",
-  //   delivered: "bg-green-500 text-white",
-  //   cancelled: "bg-red-500 text-white",
-  // };
-
   return (
     <div className="pt-12 w-full">
       <div className="bg-gray-200 dark:bg-brand-bgdark p-8 rounded-xl w-full">
@@ -65,15 +59,6 @@ const NewOrders = () => {
                       <div>{data.RiderPhoneNumber}</div>
                     </div>
                   </td>
-                  {/* <td className="text-base dark:text-brand-bg py-4 rounded-r-xl">
-                    <span
-                      className={`px-3 py-1 rounded-lg text-xs font-bold ${
-                        statusColors[data.DeliveryStatus || "ongoing"]
-                      }`}
-                    >
-                      {data.DeliveryStatus}
-                    </span>
-                  </td> */}
                 </tr>
               ))}
             </tbody>

@@ -271,7 +271,7 @@ const Nav_Links: NavLink[] = [
   { name: "About Us", link: "/about", icon: About },
   { name: "Services", link: "/services", icon: Services },
   { name: "Contact Us", link: "/contact", icon: Contact },
-  { name: "Dashboard", link: "/confirmorder", icon: DashboardIcon },
+  { name: "Dashboard", link: "/dashboard/rider/home", icon: DashboardIcon },
 ];
 
 export default AltNavbar;

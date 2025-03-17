@@ -1,4 +1,4 @@
-import ButtonFilters from "@/components/Dashboard/ButtonFilters";
+// import ButtonFilters from "@/components/Dashboard/ButtonFilters";
 import RiderHistory from "@/components/Dashboard/RiderDash/RiderHistory/RiderHistory";
 import React from "react";
 
@@ -8,10 +8,10 @@ const RiderShipmentPage = () => {
       <div>
         <h1 className="font-bold text-5xl">Shipment History</h1>
       </div>
-      <div className="my-[4rem] flex flex-col">
-        <div>
+      <div className="">
+        {/* <div>
           <ButtonFilters />
-        </div>
+        </div> */}
         <RiderHistory />
       </div>
     </>

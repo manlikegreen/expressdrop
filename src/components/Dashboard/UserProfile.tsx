@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import profile from "@/assets/About/Team/ip.png";
+import AlertBanner from "@/components/UI/AlertBanner";
 
 interface UserProfileData {
   name: string;
@@ -12,6 +13,7 @@ interface UserProfileData {
 
 const UserProfile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [alertVisible, setAlertVisible] = useState(false);
 
   const [userData, setUserData] = useState({
     name: "Eric Smith",
@@ -38,6 +40,8 @@ const UserProfile = () => {
     console.log("Saved user data:", userData);
     setUserData(formData);
     setIsModalOpen(false);
+
+    setAlertVisible(true);
   };
 
   const handleLogout = () => {
@@ -47,6 +51,10 @@ const UserProfile = () => {
 
   return (
     <div className="m-4">
+      {alertVisible && (
+        <AlertBanner type="success" message="Profile updated successfully" />
+      )}
+
       <div className="flex flex-col gap-4 mx-auto">
         {/* Profile Info */}
         <div className="flex gap-3 items-center">
@@ -83,8 +91,8 @@ const UserProfile = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center backdrop-blur-md">
-          <div className="bg-gray-100 dark:bg-brand-bgdark rounded-lg p-6 w-11/12 max-w-md shadow-[0_0_10px_0_#fff]">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-xl">
+          <div className="bg-gray-100 dark:bg-brand-bgdark rounded-lg p-6 w-11/12 max-w-md shadow-xl dark:shadow-[0_0_10px_0_#fff]">
             <h2 className="text-xl font-bold mb-4">Edit Profile</h2>
             <div className="flex flex-col gap-4">
               {/* Name Field */}
