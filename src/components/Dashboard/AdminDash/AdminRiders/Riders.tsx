@@ -49,11 +49,11 @@ const Riders = () => {
     setSelectedRider(null);
   };
   return (
-    <div className="container mt-10 px-10 py-6">
+    <div className="container lg:mt-10 px-10 py-6">
       {/* Page Title */}
-      <div className="">
+      {/* <div className="">
         <div className="text-5xl font-extrabold mb-6">Riders</div>
-      </div>
+      </div> */}
 
       {/* Riders Table */}
       <div className="overflow-x-auto">
@@ -63,7 +63,7 @@ const Riders = () => {
               {TABLEHEADERS.map((header, index) => (
                 <th
                   key={header}
-                  className={`py-4 bg-gray-200 dark:bg-brand-bgdark uppercase font-bold border-y-2 border-gray-700 dark:border-brand-bg text-left ps-4 ${
+                  className={`py-4 bg-gray-200 dark:bg-brand-bgdark uppercase font-bold border-y-2 border-gray-700 dark:border-brand-bg text-sm lg:text-base text-left ps-4 ${
                     index === 0
                       ? "rounded-l-xl"
                       : index === TABLEHEADERS.length - 1
@@ -80,7 +80,7 @@ const Riders = () => {
             {filteredRiders.map((rider) => (
               <tr
                 key={rider.riderID}
-                className="bg-gray-100 dark:bg-brand-bgdark text-left"
+                className="bg-gray-100 dark:bg-brand-bgdark text-left text-xs lg:text-base"
               >
                 <td className="py-4 rounded-l-xl ">
                   <div className="pl-3">
@@ -88,9 +88,11 @@ const Riders = () => {
                       <Image
                         src={rider.image}
                         alt={rider.name}
-                        className="w-10 h-10 rounded-full"
+                        className="w-10 h-10 rounded-full hidden md:block"
                       />
-                      <div className="pl-4">{rider.name}</div>
+                      <div className="pl-4 text-xs lg:text-base">
+                        {rider.name}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -98,7 +100,7 @@ const Riders = () => {
                 <td className="py-4 rounded-r-xl">
                   <button
                     onClick={() => handleAssignRoleClick(rider)}
-                    className="text-blue-500 hover:underline font-bold uppercase"
+                    className="text-blue-500 hover:underline font-bold uppercase text-xs lg:text-base"
                   >
                     View More
                   </button>

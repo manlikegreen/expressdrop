@@ -66,7 +66,7 @@ const RiderSelectionModal: React.FC<RiderSelectionModalProps> = ({
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-xl z-50">
-      <div className="bg-white dark:bg-brand-bgdark rounded-lg p-6 w-[100%] max-w-lg shadow-lg">
+      <div className="bg-white dark:bg-brand-bgdark rounded-lg p-6 w-3/4 h-3/4 overflow-y-auto shadow-lg">
         <h2 className="text-xl font-bold text-center mb-4">
           Confirm Your Delivery Details
         </h2>

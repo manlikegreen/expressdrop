@@ -74,7 +74,7 @@ const RiderOrderDetailsModal: React.FC<OrderDetailsProps> = ({
             <AlertBanner type={alert.type} message={alert.message} />
           </div>
         )}
-        <div className="bg-white dark:bg-brand-bgdark p-6 rounded-lg w-3/4">
+        <div className="bg-white dark:bg-brand-bgdark p-4 rounded-lg w-3/4 h-3/4 overflow-y-auto">
           <div className="flex justify-between items-center mb-10">
             <h2 className="text-xl font-bold uppercase">Order Details</h2>
             <button onClick={onClose}>
@@ -82,10 +82,12 @@ const RiderOrderDetailsModal: React.FC<OrderDetailsProps> = ({
             </button>
           </div>
 
-          <div className="grid grid-cols-2 gap-6 mb-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {/* ORDER INFO */}
             <div>
-              <h3 className="font-semibold text-lg mb-2">ORDER INFO</h3>
+              <h3 className="font-semibold text-base lg:text-lg mb-2">
+                ORDER INFO
+              </h3>
               <p>
                 <strong>Code:</strong> {order.OrderCode}
               </p>
@@ -105,7 +107,9 @@ const RiderOrderDetailsModal: React.FC<OrderDetailsProps> = ({
 
             {/* CUSTOMER INFO */}
             <div>
-              <h3 className="font-semibold text-lg mb-2">CUSTOMER INFO</h3>
+              <h3 className="font-semibold text-base lg:text-lg mb-2">
+                CUSTOMER INFO
+              </h3>
               <p>
                 <strong>Name:</strong> {order.CustomerName}
               </p>
@@ -119,7 +123,9 @@ const RiderOrderDetailsModal: React.FC<OrderDetailsProps> = ({
 
             {/* VENDOR INFO */}
             <div>
-              <h3 className="font-semibold text-lg mb-2">VENDOR INFO</h3>
+              <h3 className="font-semibold text-base lg:text-lg mb-2">
+                VENDOR INFO
+              </h3>
               <p>
                 <strong>Name:</strong> {order.VendorName}
               </p>

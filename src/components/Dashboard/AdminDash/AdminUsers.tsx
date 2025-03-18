@@ -77,7 +77,7 @@ const AdminUsers = () => {
     <div className="container mt-10 px-10 py-6">
       {/* Page Title */}
       <div className="flex justify-between">
-        <div className="text-5xl font-extrabold mb-6">Users</div>
+        <div className="text-2xl lg:text-5xl font-extrabold mb-6">Users</div>
         <Button
           variant={"default"}
           onClick={() => setIsAddStaffModalOpen(true)}
@@ -94,7 +94,7 @@ const AdminUsers = () => {
               {TABLEHEADERS.map((header, index) => (
                 <th
                   key={header}
-                  className={`py-4 bg-gray-200 dark:bg-brand-bgdark uppercase font-bold border-y-2 border-brand-secondary dark:border-brand-bg text-left ps-4 ${
+                  className={`py-4 bg-gray-200 dark:bg-brand-bgdark uppercase font-bold border-y-2 border-brand-secondary dark:border-brand-bg text-sm lg:text-base text-left ps-4 ${
                     index === 0
                       ? "rounded-l-xl"
                       : index === TABLEHEADERS.length - 1
@@ -113,7 +113,7 @@ const AdminUsers = () => {
                 key={user.userID}
                 className="bg-gray-100 dark:bg-brand-bgdark text-left"
               >
-                <td className="py-4 rounded-l-xl">
+                <td className="py-4 rounded-l-xl text-xs lg:text-base">
                   {/* <Image
                     src={user.image}
                     alt={user.name}
@@ -121,7 +121,7 @@ const AdminUsers = () => {
                   /> */}
                   <div className="pl-4">{user.name}</div>
                 </td>
-                <td className="py-4">{user.userID}</td>
+                <td className="py-4 text-xs lg:text-base">{user.userID}</td>
                 <td className="py-4 rounded-r-xl">
                   {user.role ? (
                     <span
@@ -134,7 +134,7 @@ const AdminUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleAssignRoleClick(user)}
-                      className="text-blue-500 hover:underline font-bold uppercase"
+                      className="text-blue-500 hover:underline font-bold uppercase text-xs lg:text-base"
                     >
                       Assign Role
                     </button>

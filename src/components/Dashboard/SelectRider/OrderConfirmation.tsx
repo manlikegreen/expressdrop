@@ -41,15 +41,17 @@ const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
   };
 
   return (
-    <div className="container mt-[5rem] lg:mt-[8rem] flex justify-center items-center flex-col gap-8">
-      <div>
-        <h1 className="text-[1.5rem] md:text-[2.5rem] lg:text-[3.3rem] font-semibold text-center">
-          Order Confirmation
-        </h1>
-        <p className="text-[0.75rem] md:text-[1.25rem] text-gray-600 dark:text-brand-ash text-center font-medium">
-          Please review your details before confirming your order
-        </p>
-      </div>
+    <div className="container mt-[8rem] flex justify-center items-center flex-col gap-8">
+      {!isOrderConfirmed && (
+        <div>
+          <h1 className="text-[1.5rem] md:text-[2.5rem] lg:text-[3.3rem] font-semibold text-center">
+            Order Confirmation
+          </h1>
+          <p className="text-[0.75rem] md:text-[1.25rem] text-gray-600 dark:text-brand-ash text-center font-medium">
+            Please review your details before confirming your order
+          </p>
+        </div>
+      )}
       <div className="max-w-2xl w-full bg-inherit dark:bg-inherit">
         {isOrderConfirmed ? (
           // ✅ Lottie Success Animation

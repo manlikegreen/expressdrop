@@ -25,12 +25,12 @@ const AdminPricePerKmMd = () => {
   return (
     <div className="dark:bg-brand-dark shadow-2xl dark:shadow-[0_0_10px_0_#fff] p-5 w-fit mt-4 rounded-xl">
       <div className="flex flex-col gap-4 mx-auto items-center p-4">
-        <div className="text-4xl">₦ {price}</div>
-        <p className="text-brand-ash text-base">For medium items</p>
+        <div className="text-lg lg:text-4xl">₦ {price}</div>
+        <p className="text-brand-ash text-sm lg:text-base">For medium items</p>
         <div className="group relative">
           <button
             onClick={handleOpenModal}
-            className="relative group-hover:text-brand group-hover:scale-105 transition-all duration-500 flex items-center"
+            className="relative group-hover:text-brand group-hover:scale-105 transition-all duration-500 flex items-center text-sm lg:text-base"
           >
             Change Price
             <FaChevronRight className="ml-2" />

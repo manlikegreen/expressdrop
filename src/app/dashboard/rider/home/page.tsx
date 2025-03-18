@@ -10,7 +10,7 @@ const RidersHomePage = () => {
         <RiderHomeCards />
       </div>
       <div>
-        <h1 className="mt-[3rem] lg:mt-[7rem] font-bold text-5xl container">
+        <h1 className="mt-[3rem] lg:mt-[7rem] font-bold text-2xl lg:text-5xl container">
           Ongoing Orders
         </h1>
       </div>

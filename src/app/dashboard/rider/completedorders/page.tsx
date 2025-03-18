@@ -5,10 +5,10 @@ import React from "react";
 const RiderCompletedOrdersPage = () => {
   return (
     <>
-      <div>
-        <h1 className="font-bold text-5xl">Completed Orders</h1>
+      <div className="lg:mt-[3rem]">
+        <h1 className="font-bold text-2xl lg:text-5xl">Completed Orders</h1>
       </div>
-      <div className="my-[4rem]">
+      <div className="lg:my-[4rem]">
         <RiderCompletedOrders />
       </div>
     </>

@@ -49,9 +49,9 @@ const Vendors = () => {
   };
 
   return (
-    <div className="container mt-10 px-10 py-6">
+    <div className="container lg:mt-10 px-10 py-6">
       {/* Page Title */}
-      <div className="text-5xl font-extrabold mb-6">Vendors</div>
+      {/* <div className="text-2xl lg:text-5xl font-extrabold mb-6">Vendors</div> */}
 
       {/* Vendors Table */}
       <div className="overflow-x-auto">
@@ -61,7 +61,7 @@ const Vendors = () => {
               {TABLEHEADERS.map((header, index) => (
                 <th
                   key={header}
-                  className={`py-4 bg-gray-200 dark:bg-brand-bgdark uppercase font-bold border-y-2 border-gray-700 dark:border-brand-bg text-left ps-4 ${
+                  className={`py-4 bg-gray-200 dark:bg-brand-bgdark uppercase font-bold border-y-2 border-gray-700 dark:border-brand-bg text-sm lg:text-base text-left ps-4 ${
                     index === 0
                       ? "rounded-l-xl"
                       : index === TABLEHEADERS.length - 1
@@ -78,17 +78,19 @@ const Vendors = () => {
             {filteredVendors.map((vendor) => (
               <tr
                 key={vendor.vendorID}
-                className="bg-gray-100 dark:bg-brand-bgdark text-left"
+                className="bg-gray-100 dark:bg-brand-bgdark text-left text-xs lg:text-base"
               >
                 <td className="py-4 rounded-l-xl">
                   <div className="pl-3">
-                    <div className="flex justify-start items-center left-0">
+                    <div className="flex justify-start items-center left-0 ">
                       <Image
                         src={vendor.image}
                         alt={vendor.name}
-                        className="w-10 h-10 rounded-full"
+                        className="w-10 h-10 rounded-full hidden md:block"
                       />
-                      <div className="pl-4">{vendor.name}</div>
+                      <div className="pl-4 text-xs lg:text-base">
+                        {vendor.name}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -96,7 +98,7 @@ const Vendors = () => {
                 <td className="py-4 rounded-r-xl">
                   <button
                     onClick={() => handleViewDetailsClick(vendor)}
-                    className="text-blue-500 hover:underline font-bold uppercase"
+                    className="text-blue-500 hover:underline font-bold uppercase text-xs lg:text-base"
                   >
                     View More
                   </button>

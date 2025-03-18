@@ -5,13 +5,10 @@ import React from "react";
 const RiderShipmentPage = () => {
   return (
     <>
-      <div>
-        <h1 className="font-bold text-5xl">Shipment History</h1>
+      <div className="lg:mt-[3rem]">
+        <h1 className="font-bold text-2xl lg:text-5xl">Shipment History</h1>
       </div>
-      <div className="">
-        {/* <div>
-          <ButtonFilters />
-        </div> */}
+      <div className="lg:my-[4rem]">
         <RiderHistory />
       </div>
     </>

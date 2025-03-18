@@ -21,7 +21,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <div className="flex relative min-h-screen w-full overflow-hidden">
+    <div className="flex relative min-h-screen w-full overflow-x-auto">
       {/* Sidebar + Overlay */}
       {activeMenu && (
         <div

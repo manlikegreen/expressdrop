@@ -12,9 +12,11 @@ const AdminHomePage = () => {
         <AdminHomeCards />
       </div>
       <section className="mt-10 flex justify-center gap-10">
-        <AdminPricePerKm />
-        <AdminPricePerKmMd />
-        <AdminPricePerKmLg />
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          <AdminPricePerKm />
+          <AdminPricePerKmMd />
+          <AdminPricePerKmLg />
+        </div>
       </section>
       <div className="pt-8">
         <AdminUsers />

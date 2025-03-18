@@ -47,14 +47,14 @@ const RiderHomePage = () => {
       {/* Show alert banner if there is an alert */}
       {alert && <AlertBanner type={alert.type} message={alert.message} />}
 
-      <div className="container mt-[4.5rem] overflow-x-auto px-10 py-6">
+      <div className="container lg:mt-[4.5rem] overflow-x-auto px-10 py-6">
         <table className="w-full border-separate border-spacing-y-5">
           <thead className="mb-3">
             <tr className="py-6">
               {TABLEHEADERS.map((header, index) => (
                 <th
                   key={header.header}
-                  className={`py-4 ps-2 bg-gray-200 dark:bg-brand-bgdark uppercase font-bold border-y-2 border-black dark:border-brand-bg text-center ${
+                  className={`py-4 ps-2 bg-gray-200 dark:bg-brand-bgdark uppercase font-bold border-y-2 border-black dark:border-brand-bg text-sm lg:text-base text-center ${
                     index === 0
                       ? "rounded-l-xl"
                       : index === TABLEHEADERS.length - 1
@@ -73,28 +73,28 @@ const RiderHomePage = () => {
                 key={data.OrderCode}
                 className="bg-gray-200 dark:bg-brand-bgdark text-center"
               >
-                <td className="py-4 rounded-l-xl">
+                <td className="text-xs lg:text-base py-4 rounded-l-xl">
                   <div className="pb-1">{data.OrderCode}</div>
                 </td>
-                <td className="text-base dark:text-brand-bg py-4">
+                <td className="text-xs lg:text-base dark:text-brand-bg py-4">
                   {data.PickupLocation}
                 </td>
-                <td className="text-base dark:text-brand-bg py-4">
+                <td className="text-xs lg:text-base dark:text-brand-bg py-4">
                   {data.Destination}
                 </td>
-                <td className="text-base dark:text-brand-bg py-4">
+                <td className="text-xs lg:text-base dark:text-brand-bg py-4">
                   <div className="pb-1">{data.NoOfItems}</div>
                 </td>
-                <td className="text-base dark:text-brand-bg py-4">
+                <td className="text-xs lg:text-base dark:text-brand-bg py-4">
                   <div className="flex flex-col gap-2">
                     <div>{data.VendorName}</div>
                     <div>{data.VendorPhoneNumber}</div>
                   </div>
                 </td>
-                <td className="text-base dark:text-brand-bg py-4">
+                <td className="text-xs lg:text-base dark:text-brand-bg py-4">
                   {data.CustomerAddress}
                 </td>
-                <td className="text-base dark:text-brand-bg py-4">
+                <td className="text-xs lg:text-base dark:text-brand-bg py-4">
                   <span
                     className={`px-3 py-1 rounded-lg text-xs font-bold ${
                       statusColors[data.DeliveryStatus || "ongoing"]
@@ -103,7 +103,7 @@ const RiderHomePage = () => {
                     {data.DeliveryStatus}
                   </span>
                 </td>
-                <td className="text-base dark:text-brand-bg py-4 rounded-r-xl">
+                <td className="text-xs lg:text-base dark:text-brand-bg py-4 rounded-r-xl">
                   <button
                     onClick={() => {
                       setSelectedOrder(data);
