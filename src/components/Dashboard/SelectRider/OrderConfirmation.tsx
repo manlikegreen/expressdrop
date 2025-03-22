@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react"; // ✅ Import Lottie
 import { Button } from "@/components/UI/Button";
+import PaymentModal from "./PaymentModal";
 
 interface OrderConfirmationProps {
   selectedRider: {
@@ -34,9 +35,15 @@ const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
   onEdit,
 }) => {
   const [isOrderConfirmed, setIsOrderConfirmed] = useState(false);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const handleConfirmClick = () => {
-    setIsOrderConfirmed(true);
+    setIsPaymentModalOpen(true);
+  };
+
+  const handlePaymentSuccess = () => {
+    setIsPaymentModalOpen(false);
+    setIsOrderConfirmed(true); // Confirm order after successful payment
     onConfirm();
   };
 
@@ -132,6 +139,15 @@ const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
           </div>
         )}
       </div>
+
+      {/* Payment Modal */}
+      <PaymentModal
+        isOpen={isPaymentModalOpen}
+        onClose={() => setIsPaymentModalOpen(false)}
+        onSubmit={handlePaymentSuccess}
+        totalPrice={totalPrice} // Pass total price
+        customerDetails={customerDetails} // Pass customer details
+      />
     </div>
   );
 };

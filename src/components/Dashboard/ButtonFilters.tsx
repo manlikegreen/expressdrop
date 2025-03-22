@@ -1,70 +1,90 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/UI/Button";
-import AlignCenterIcon from "../Icons/AlignCenterIcon";
+import { useState, useEffect } from "react";
+import { FaFilter } from "react-icons/fa";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-function ButtonFilters() {
-  const [filter, setFilter] = useState("all items");
+const ButtonFilter = () => {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([
+    null,
+    null,
+  ]);
+  const [startDate, endDate] = dateRange;
 
-  const isSelected = (option: string) => option === filter;
-
-  // Function to get styles dynamically
-  const getButtonStyles = (option: string) => {
-    const baseStyles = "border-2 font-medium h-10 lg:h-12 capitalize xl:px-5";
-
-    if (isSelected(option)) {
-      // Selected: Background color + white text
-      switch (option) {
-        case "delivered":
-          return `${baseStyles} bg-green-500 text-white border-green-500 hover:bg-green-600`;
-        case "ongoing":
-          return `${baseStyles} bg-amber-500 text-white border-amber-500 hover:bg-amber-600`;
-        case "cancelled":
-          return `${baseStyles} bg-red-500 text-white border-red-500 hover:bg-red-600`;
-        default:
-          return baseStyles;
+  // Close dropdown and date picker on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setShowDropdown(false);
+        setShowDatePicker(false);
       }
-    } else {
-      // Unselected: Transparent background, colored border + text, no hover color change
-      switch (option) {
-        case "delivered":
-          return `${baseStyles} bg-inherit text-green-500 border-green-500 hover:bg-green-500 hover:text-white`;
-        case "ongoing":
-          return `${baseStyles} bg-inherit text-amber-500 border-amber-500 hover:bg-amber-500 hover:text-white`;
-        case "cancelled":
-          return `${baseStyles} bg-inherit text-red-500 border-red-500 hover:bg-red-500 hover:text-white`;
-        default:
-          return baseStyles;
-      }
-    }
-  };
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
-    <div className="flex gap-4 pt-[1.94rem] lg:pt-[3.65rem] pb-[0.5rem] lg:pb-[1.22rem]">
-      <Button
-        variant={isSelected("all items") ? "default" : "alternate"}
-        className="h-10 lg:h-12 capitalize xl:px-5"
-        onClick={() => setFilter("all items")}
+    <div className="relative">
+      {/* Filter Button */}
+      <button
+        onClick={() => setShowDropdown(!showDropdown)}
+        className="flex items-center justify-center p-3 rounded-lg bg-brand-bgdark text-brand-bg dark:bg-brand-bg dark:text-brand-dark shadow-md"
       >
-        all items
-      </Button>
-      {OPTIONS.map((option) => (
-        <Button
-          key={option}
-          className={`hidden lg:block ${getButtonStyles(option)}`}
-          onClick={() => setFilter(option)}
-        >
-          {option}
-        </Button>
-      ))}
-      <Button variant="ghost" size="icon" className="lg:hidden">
-        <AlignCenterIcon />
-      </Button>
+        <FaFilter className="text-xl" />
+      </button>
+
+      {/* Dropdown Menu */}
+      {showDropdown && (
+        <div className="absolute right-0 mt-2 w-56 bg-card dark:bg-card border border-brand-ash dark:border-brand-bg-dark rounded-lg shadow-lg z-50">
+          <ul className="py-2">
+            <li
+              onClick={() => {
+                setShowDatePicker(!showDatePicker);
+                setShowDropdown(false);
+              }}
+              className="px-4 py-3 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800 transition"
+            >
+              Filter by Date
+            </li>
+          </ul>
+        </div>
+      )}
+
+      {/* Date Picker */}
+      {showDatePicker && (
+        <div className="absolute right-0 mt-2 p-4 w-64 bg-card dark:bg-card border border-brand-ash dark:border-brand-bg-dark rounded-lg shadow-lg z-50">
+          <h3 className="text-sm font-semibold text-brand-secondary dark:text-brand-bg mb-2">
+            Select Date Range
+          </h3>
+          <DatePicker
+            selectsRange
+            startDate={startDate}
+            endDate={endDate}
+            onChange={(update) =>
+              setDateRange(update as [Date | null, Date | null])
+            }
+            isClearable
+            className="w-full p-2 border border-brand-ash rounded-md text-brand-secondary dark:text-brand-bg dark:bg-brand-dark"
+          />
+          <button
+            className="mt-6 w-full bg-brand py-2 rounded-md hover:bg-opacity-80 transition"
+            onClick={() => {
+              console.log("Selected Date Range:", dateRange);
+              setShowDatePicker(false);
+            }}
+          >
+            Apply
+          </button>
+        </div>
+      )}
     </div>
   );
-}
+};
 
-const OPTIONS = ["delivered", "ongoing", "cancelled"];
-
-export default ButtonFilters;
+export default ButtonFilter;

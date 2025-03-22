@@ -10,7 +10,7 @@ interface VendorInformation {
   name: string;
   vendorID: string;
   image: StaticImageData;
-  role?: string;
+  status?: string;
   phoneNumber?: string;
   email?: string;
   address?: string;
@@ -28,13 +28,25 @@ const VendorsInformation: Array<VendorInformation> = [
 ];
 
 // Table Headers
-const TABLEHEADERS = ["Vendor Name", "Vendor ID", "Vendor Details"];
+const TABLEHEADERS = [
+  "Vendor Name",
+  "Vendor ID",
+  "Vendor Status",
+  "Vendor Details",
+];
 
 const Vendors = () => {
-  const [filteredVendors] = useState(VendorsInformation);
+  const [filteredVendors, setFilteredVendors] = useState(VendorsInformation);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isStatusModalOpen, setIsStatusModalOpen] = useState(false);
   const [selectedVendor, setSelectedVendor] =
     useState<VendorInformation | null>(null);
+  const [selectedUser, setSelectedUser] = useState<VendorInformation | null>(
+    null
+  );
+  const [statusInput, setStatusInput] = useState({
+    status: "",
+  });
 
   // Open Modal for Viewing Vendor Details
   const handleViewDetailsClick = (vendor: VendorInformation) => {
@@ -42,10 +54,42 @@ const Vendors = () => {
     setIsModalOpen(true);
   };
 
+  const handleAssignRoleClick = (vendor: VendorInformation) => {
+    setSelectedUser(vendor);
+    setIsStatusModalOpen(true);
+  };
+
   // Close Modal
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedVendor(null);
+  };
+
+  const closeStatusModal = () => {
+    setIsStatusModalOpen(false);
+    setSelectedVendor(null);
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (selectedUser) {
+      setFilteredVendors((prevVendors) =>
+        prevVendors.map((vendor) =>
+          vendor.vendorID === selectedUser.vendorID
+            ? { ...vendor, status: statusInput.status }
+            : vendor
+        )
+      );
+    }
+
+    closeStatusModal();
+    setStatusInput({ status: "" });
+  };
+
+  const statusColors: Record<string, string> = {
+    active: "bg-green-500 text-white",
+    deactivated: "bg-black text-white",
   };
 
   return (
@@ -94,8 +138,26 @@ const Vendors = () => {
                     </div>
                   </div>
                 </td>
-                <td className="py-4">{vendor.vendorID}</td>
-                <td className="py-4 rounded-r-xl">
+                <td className="py-4 ps-4">{vendor.vendorID}</td>
+                <td className="py-4 ps-4">
+                  {vendor.status ? (
+                    <span
+                      className={`px-3 py-1 rounded-md font-bold uppercase text-xs lg:text-base ${
+                        statusColors[vendor.status] || ""
+                      }`}
+                    >
+                      {vendor.status}
+                    </span>
+                  ) : (
+                    <button
+                      onClick={() => handleAssignRoleClick(vendor)}
+                      className="text-blue-500 hover:underline font-bold uppercase text-xs lg:text-base"
+                    >
+                      Set Status
+                    </button>
+                  )}
+                </td>
+                <td className="py-4 ps-4 rounded-r-xl">
                   <button
                     onClick={() => handleViewDetailsClick(vendor)}
                     className="text-blue-500 hover:underline font-bold uppercase text-xs lg:text-base"
@@ -149,6 +211,47 @@ const Vendors = () => {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {isStatusModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-lg bg-black bg-opacity-50">
+          <div className="bg-brand-bg dark:bg-brand-bgdark rounded-lg p-6 w-1/3 shadow-xl">
+            <h3 className="text-xl font-bold mb-4">
+              Assign Status to {selectedUser?.name}
+            </h3>
+            <form onSubmit={handleFormSubmit} className="space-y-4">
+              <select
+                className="w-full p-2 rounded-md dark:bg-brand-dark border border-brand-ash focus:outline-none"
+                value={statusInput.status}
+                onChange={(e) =>
+                  setStatusInput({ ...statusInput, status: e.target.value })
+                }
+                required
+              >
+                <option value="" disabled>
+                  Select Role
+                </option>
+                <option value="active">Active</option>
+                <option value="deactivated">Deactivated</option>
+              </select>
+              <div className="flex justify-end gap-4">
+                <button
+                  type="button"
+                  onClick={closeStatusModal}
+                  className="bg-red-500 text-white px-4 py-2 rounded-md"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="bg-green-500 text-white px-4 py-2 rounded-md"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

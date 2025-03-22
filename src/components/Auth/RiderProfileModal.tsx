@@ -108,7 +108,8 @@ const RiderProfile: React.FC<RiderProfileProps> = ({ onClose }) => {
                       {...field}
                       className="w-full p-2 border rounded-md dark:bg-gray-700"
                     >
-                      <option value="">NIN</option>
+                      <option value="">Select Means of Identification</option>
+                      <option value="nin">NIN</option>
                       <option value="internationalPassport">
                         International Passport
                       </option>
