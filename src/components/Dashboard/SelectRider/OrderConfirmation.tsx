@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react"; // ✅ Import Lottie
 import { Button } from "@/components/UI/Button";
-import PaymentModal from "./PaymentModal";
+import dynamic from "next/dynamic";
+const PaymentModal = dynamic(() => import("./PaymentModal"), { ssr: false });
 
 interface OrderConfirmationProps {
   selectedRider: {
